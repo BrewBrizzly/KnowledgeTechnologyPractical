@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<knowledge>
+	<title>Exploring glass and colour</title>
+	<description>What processes are needed in order to create the desired object?</description>
+
+	<goal name="process">
+		<description>What process is needed?</description>
+		<answer value="jewel_process">The jewellerly process is required.</answer>
+	</goal>
+
+	<rule>
+		<description>Jewellery process</description>
+		<if>
+			<and>
+				<fact name="glass">yes</fact>
+				<fact name="jewel_type">ring</fact> <!-- is not right -->
+			</and>
+		</if>
+		<then>
+			<fact name="process">jewel_process</fact>
+		</then>
+	</rule>
+
+
+	<rule>
+		<description>Lampworking process</description>
+			<if>
+				<and>
+					<fact name="glass">yes</fact>
+					<fact name="type">is_wearable</fact>
+					<fact name="jewel_type">necklace</fact>
+					<fact name="complexity">simple</fact>
+					<fact name="hole_necklace">hole</fact>
+					<fact name="pendant">glass_bead</fact>
+					<fact name="production">hand_made</fact>
+				</and>
+		</if>
+		<then>
+			<fact name="process">lamp_process</fact>
+		</then>
+	</rule>
+
+
+	<rule>
+		<description>Fusing process</description>
+			<if>
+				<fact name=" "> </fact>
+		</if>
+		<then>
+			<fact name="process">fusing_process</fact>
+		</then>
+	</rule>
+
+
+	<question>
+		<description>Do you want to create something out of glass?</description>
+		<option>
+			<description>I want an object made of glass.</description>
+			<then>
+				<fact name="glass">yes</fact>
+			</then>
+		</option>
+		<option>
+			<description>I do not want an object made of glass.</description>
+			<then>
+				<fact name="glass">no</fact>
+			</then>
+		</option>
+	</question>
+
+	<question>
+		<description>Do you want a wearable object or a sculptural object out of glass?</description>
+		<option>
+			<description>The object is wearable</description>
+			<then>
+				<fact name="type">is_wearable</fact>
+			</then>
+		</option>
+		<option>
+			<description>The object is sculptural</description>
+			<then>
+				<fact name="type">sculptural</fact>
+			</then>
+		</option>
+	</question>
+
+<!-- If you want a wearable question  -->
+	<question>
+			<description>What kind of wearable object would you like?</description>
+			<option>
+				<description>A necklace</description>
+				<then>
+					<fact name="jewel_type">necklace</fact>
+				</then>
+			</option>
+			<option>
+				<description>A brooch</description>
+				<then>
+					<fact name="jewel_type">brooch</fact>
+				</then>
+			</option>
+			<option>
+				<description>Earrings</description>
+				<then>
+					<fact name="jewel_type">earrings</fact>
+				</then>
+			</option>
+			<option>
+				<description>A ring</description>
+				<then>
+					<fact name="jewel_type">ring</fact>
+				</then>
+			</option>
+			<option>
+				<description>An other type of jewel.</description>
+				<then>
+					<fact name="jewel_type">other</fact>
+				</then>
+			</option>
+		</question>
+
+<!-- if you want a necklace -->
+	<question>
+		<description>Do you want a simple or complex necklace?</description>
+		<option>
+			<description>The necklace should be simple</description>
+			<then>
+				<fact name="complexity">simple</fact>
+			</then>
+		</option>
+		<option>
+			<description>The necklace should be complex</description>
+			<then>
+				<fact name="complexity">complex</fact>
+			</then>
+		</option>
+	</question>
+	
+<!-- If you want a simple necklace -->
+
+	<question>
+		<description>Do you want a necklace with a hole?</description>
+		<option>
+			<description>The necklace should be with a hole</description>
+			<then>
+				<fact name="hole_necklace">hole</fact>
+			</then>
+		</option>
+		<option>
+			<description>The necklace should be without a hole</description>
+			<then>
+				<fact name="hole_necklace">no_hole</fact>
+			</then>
+		</option>
+	</question>
+
+<!-- If you want an object with a hole -->
+
+	<question>
+		<description>What type of pendant would you like?</description>
+		<option>
+			<description>The necklace should be with a hole</description>
+			<then>
+				<fact name="pendant">glass_bead</fact>
+			</then>
+		</option>
+		<option>
+			<description>The necklace should be without a hole</description>
+			<then>
+				<fact name="pendant">drilled_fused</fact>
+			</then>
+		</option>
+	</question>
+
+<!-- If you want a glass bead -->
+	<question>
+		<description>How would you like your glass bead?</description>
+		<option>
+			<description>I would like a ready made glass bead</description>
+			<then>
+				<fact name="production">hand_made</fact>
+			</then>
+		</option>
+		<option>
+			<description>I would like to buy a ready made glass bead</description>
+			<then>
+				<fact name="production">bought</fact>
+			</then>
+		</option>
+	</question>
+
+
+</knowledge>
+
+
+
