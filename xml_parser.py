@@ -1,5 +1,8 @@
 import os
 import xml.etree.ElementTree as ET
+from goal import *
+from question import *
+from rule import *
 
 # responsible for parsing the knowledge base and the clauses
 class XML_Parser(object):
@@ -17,6 +20,10 @@ class XML_Parser(object):
 
         tree = ET.parse(path)
         root = tree.getroot()
-        for rule in root:
-            for fact in rule:
-                print(fact.attrib, fact.tag)
+        for node in root:
+            if node.tag == 'rule':
+                self.knowledge_base.append(Rule(node))
+            if node.tag == 'goal':
+                self.knowledge_base.append(Goal(node))
+            if node.tag == 'question':
+                self.knowledge_base.append(Question(node))
