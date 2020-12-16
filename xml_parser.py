@@ -9,8 +9,9 @@ class XML_Parser(object):
 
     # creating two lists containing the knowledge base and the clauses
     def __init__(self):
-        self.knowledge_base = list()
-        self.Clause = list()
+        self.rules = list()
+        self.goals = list()
+        self.questions = list()
 
     # parsing the actual knowledge base
     def parse_kowledge_base(self, path):
@@ -24,8 +25,8 @@ class XML_Parser(object):
         # Going through first level instances in xml file
         for node in root:
             if node.tag == 'rule':
-                self.knowledge_base.append(Rule(node))
+                self.rules.append(Rule(node))
             if node.tag == 'goal':
-                self.knowledge_base.append(Goal(node))
+                self.goals.append(Goal(node))
             if node.tag == 'question':
-                self.knowledge_base.append(Question(node))
+                self.questions.append(Question(node))
