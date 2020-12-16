@@ -14,12 +14,14 @@ class XML_Parser(object):
 
     # parsing the actual knowledge base
     def parse_kowledge_base(self, path):
+        # If file does not exist
         if os.path.isfile(path) is False:
             Log.e(f"Clause file {inputFile} does not exists")
             return
 
         tree = ET.parse(path)
         root = tree.getroot()
+        # Going through first level instances in xml file
         for node in root:
             if node.tag == 'rule':
                 self.knowledge_base.append(Rule(node))

@@ -1,5 +1,5 @@
 
-
+# responsible for parsing a goal to the knowledge base
 class Goal(object):
 
     def __init__(self, goal):

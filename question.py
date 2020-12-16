@@ -1,5 +1,5 @@
 
-
+# responsible for parsing a question to the knowledge base
 class Question(object):
 
     def __init__(self, question):
