@@ -2,18 +2,18 @@ import os
 import xml.etree.ElementTree as ET
 from goal import *
 from question import *
-from rule import *
+from test import *
 
-# responsible for parsing the knowledge base and the clauses
+# Responsible for parsing the knowledge base and the clauses
 class XML_Parser(object):
 
-    # creating two lists containing the knowledge base and the clauses
+    # Creating two lists containing the knowledge base and the clauses
     def __init__(self):
         self.rules = list()
         self.goals = list()
         self.questions = list()
 
-    # parsing the actual knowledge base
+    # Parsing the actual knowledge base
     def parse_kowledge_base(self, path):
         # If file does not exist
         if os.path.isfile(path) is False:

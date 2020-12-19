@@ -1,5 +1,4 @@
-
-# responsible for parsing a rule to the knowledge base
+# Responsible for parsing a rule to the knowledge base
 class Rule(object):
 
     # Constructor 

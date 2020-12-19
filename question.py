@@ -1,5 +1,5 @@
 
-# responsible for parsing a question to the knowledge base
+# Responsible for parsing a question to the knowledge base
 class Question(object):
 
     # Constructor 
@@ -9,7 +9,9 @@ class Question(object):
         self.description = ''
         self.option = list()
         self.make_question()
+        print("description")
         print(self.description)
+        print("options")
         print(self.option)
 
     # Makes a question 
@@ -22,18 +24,13 @@ class Question(object):
 
     # Makes a option for a question 
     def make_option(self, parent):
-        tmp_option = ''
-        tmp_conclusion = {}
+        tmp_option = list()
         for child in parent:
+            # description of the option always appended to the first index of the list 
             if child.tag == 'description':
-                tmp_option = child.text
+                tmp_option.append(child.text)
+            # the consequence of the option is appended after the description of the option
             if child.tag == 'then':
-                tmp_conclusion.update(self.make_conclusion(child))
-        self.option.append({'option': tmp_option, 'conclusion': tmp_conclusion})
-
-    # Makes a conclusion for a option
-    def make_conclusion(self, parent):
-        tmp_conclusion = {}
-        for child in parent:
-            tmp_conclusion.update({child.text : True})
-        return(tmp_conclusion)
+                for conclusion in child:
+                    tmp_option.append({conclusion.text: True})
+        self.option.append(tmp_option)

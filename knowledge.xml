@@ -123,21 +123,6 @@
 	</rule>
 
 	<!--
-	Here a variable is used to link the value from the previous_math_level fact to the general_math_level fact if and only if previous_program is 'none'. The value of previous_math_level does not need to be known yet, and is only deduced if this rule was true and the value of general_math_level is queried by the solver.
-	-->
-	<rule>
-		<description>Your general math level stays the same if you followed a previous program at the university.</description>
-		<if>
-			<not>
-				<fact name="previous_program">none</fact>
-			</not>
-		</if>
-		<then>
-			<fact name="general_math_level">$previous_math_level</fact>
-		</then>
-	</rule>
-
-	<!--
 	And finally, to get user input, you can ask questions. Each question has its own set of consequences in the <then>-clause, and these could be multiple. You can even mix multiple facts in the same question. However, it does make it rather difficult to reason about what the solver does.
 	Again, you can use variables in both the fact names and values and in the texts of the descriptions. However, variables in the latter one are not guaranteed to be derived before the question is printed, so use those sparsely and know what you are doing.
 	-->
