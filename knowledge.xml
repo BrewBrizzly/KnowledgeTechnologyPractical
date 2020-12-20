@@ -44,6 +44,26 @@
 	</rule>
 
 	<rule>
+		<description>Gender</description>
+		<if>
+			<or>
+				<and>
+					<fact name="Feels like">Male</fact>
+					<fact name="Feels like">Boy</fact>
+				</and>
+				<and>
+					<fact name="Feels like">Used</fact>
+					<fact name="Feels like">Tiered</fact>
+				</and>
+			</or>
+		</if>
+		<then>
+			<fact name="species">Male</fact>
+		</then>
+	</rule>
+
+
+	<rule>
 		<description>Qualifications for CS</description>
 		<if>
 			<and>

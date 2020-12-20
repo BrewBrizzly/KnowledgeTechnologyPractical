@@ -13,6 +13,7 @@ class Question(object):
         print(self.description)
         print("options")
         print(self.option)
+        print("\n")
 
     # Makes a question 
     def make_question(self):

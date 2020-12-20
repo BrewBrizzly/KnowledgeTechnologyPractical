@@ -9,6 +9,7 @@ class Goal(object):
         self.answers = list()
         self.make_goal()
         print(self.answers)
+        print("\n")
 
     # Adds a dict pair of each goal to the goal list
     def make_goal(self):

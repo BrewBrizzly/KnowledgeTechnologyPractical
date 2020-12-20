@@ -2,7 +2,7 @@ import os
 import xml.etree.ElementTree as ET
 from goal import *
 from question import *
-from test import *
+from rule import *
 
 # Responsible for parsing the knowledge base and the clauses
 class XML_Parser(object):
