@@ -1,8 +1,8 @@
 import os
 import xml.etree.ElementTree as ET
-from goal import *
-from question import *
-from rule import *
+from Parser.Goals.goal import *
+from Parser.Questions.question import *
+from Parser.Rules.rule import *
 
 # Responsible for parsing the knowledge base and the clauses
 class XML_Parser(object):

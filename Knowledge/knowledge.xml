@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+<knowledge>
+    <title>Customer needs</title>
+    <description>This system will help a customer decide what they need</description>
+
+    <goal name="item">
+        <description>What item is needed?</description>
+        <answer value="complex_earring">Complex Earring</answer>
+        <answer value="simple_earring">Simple Earring</answer>
+        <answer value="complex_necklace">Complex Necklace</answer>
+        <answer value="simple_necklace">Simple Necklace</answer>
+        <answer value="complex_ring">Complex Ring</answer>
+        <answer value="simple_ring">Simple Ring</answer>
+        <answer value="complex_brooch">Complex Brooch</answer>
+        <answer value="simple_brooch">Simple Brooch</answer>
+    </goal>
+
+<!-- Current final rules-->
+
+    <rule>
+        <description>Earring complex</description>
+        <if>
+            <and>
+                <fact name="piece">earring</fact>
+                <fact name="complexity">high</fact>
+            </and>
+        </if>
+        <then>
+            <fact name="final">complex_earring</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>Earring simple</description>
+        <if>
+            <and>
+                <fact name="piece">earring</fact>
+                <fact name="complexity">low</fact>
+            </and>
+        </if>
+        <then>
+            <fact name="final">simple_earring</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>Necklace complex</description>
+        <if>
+            <and>
+                <fact name="piece">necklace</fact>
+                <fact name="complexity">high</fact>
+            </and>
+        </if>
+        <then>
+            <fact name="final">complex_necklace</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>Necklace simple</description>
+        <if>
+            <and>
+                <fact name="piece">necklace</fact>
+                <fact name="complexity">low</fact>
+            </and>
+        </if>
+        <then>
+            <fact name="final">simple_necklace</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>Ring complex</description>
+        <if>
+            <and>
+                <fact name="piece">ring</fact>
+                <fact name="complexity">high</fact>
+            </and>
+        </if>
+        <then>
+            <fact name="final">complex_ring</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>Ring simple</description>
+        <if>
+            <and>
+                <fact name="piece">ring</fact>
+                <fact name="complexity">low</fact>
+            </and>
+        </if>
+        <then>
+            <fact name="final">simple_ring</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>Brooch complex</description>
+        <if>
+            <and>
+                <fact name="piece">brooch</fact>
+                <fact name="complexity">high</fact>
+            </and>
+        </if>
+        <then>
+            <fact name="final">complex_brooch</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>Brooch simple</description>
+        <if>
+            <and>
+                <fact name="piece">brooch</fact>
+                <fact name="complexity">low</fact>
+            </and>
+        </if>
+        <then>
+            <fact name="final">simple_brooch</fact>
+        </then>
+    </rule>
+
+<!-- Rules for which jewellery piece type below-->
+
+    <rule>
+        <description>If the ear should be covered, an earring is best</description>
+        <if>
+            <fact name="body">ear</fact>
+        </if>
+        <then>
+            <fact name="piece">earring</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>A Necklace is best for the chest and neck area, depending on size</description>
+        <if>
+            <and>
+                <or>
+                    <fact name="size">medium</fact>
+                    <fact name="size">large</fact>
+                </or>
+                <or>
+                    <fact name="body">neck</fact>
+                    <fact name="body">chest</fact>
+                </or>
+            </and>
+        </if>
+        <then>
+            <fact name="piece">necklace</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>A Ring is best for the fingers</description>
+        <if>
+            <fact name="body">finger</fact>
+        </if>
+        <then>
+            <fact name="piece">ring</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>A Brooch is best for the chest area depending on size</description>
+        <if>
+            <and>
+                <fact name="body">chest</fact>
+                <or>
+                    <fact name="size">small</fact>
+                    <fact name="size">medium</fact>
+                </or>
+            </and>
+        </if>
+        <then>
+            <fact name="piece">brooch</fact>
+        </then>
+    </rule>
+
+<!-- Rules for how price relates to pieces below-->
+
+    <rule>
+        <description>If the price is below 50 euros, then complexity is low</description>
+        <if>
+            <fact name="price">fifty</fact>
+        </if>
+        <then>
+            <fact name="complexity">low</fact>
+        </then>
+    </rule>
+
+    <rule>
+        <description>If the price is above 50 euros or a combination of materials is used, the complexity can be high</description>
+        <if>
+            <or>
+                <fact name="material">combination</fact>
+                <fact name="price">fifty_two_hundred</fact>
+                <fact name="price">two_hundred</fact>
+            </or>
+        </if>
+        <then>
+            <fact name="complexity">high</fact>
+        </then>
+    </rule>
+
+<!--    <rule>
+        <description></description>
+        <if>
+            <fact name=""></fact>
+        </if>
+        <then>
+            <fact name=""></fact>
+        </then>
+    </rule> -->
+
+<!-- General questions are located below-->
+
+    <question>
+        <description>What material would you like to use?</description>
+        <option>
+            <description>Glass</description>
+            <then>
+                <fact name="material">glass</fact>
+            </then>
+        </option>
+        <option>
+            <description>Silver</description>
+            <then>
+                <fact name="material">silver</fact>
+            </then>
+        </option>
+        <option>
+            <description>combination</description>
+            <then>
+                <fact name="material">combination</fact>
+            </then>
+        </option>
+    </question>
+
+    <question>
+        <description>What colour do you like?</description>
+        <option>
+            <description>Red</description>
+            <then>
+                <fact name="colour">red</fact>
+            </then>
+        </option>
+        <option>
+            <description>Blue</description>
+            <then>
+                <fact name="colour">blue</fact>
+            </then>
+        </option>
+        <option>
+            <description>Yellow</description>
+            <then>
+                <fact name="colour">yellow</fact>
+            </then>
+        </option>
+        <option>
+            <description>Other</description>
+            <then>
+                <fact name="colour">other</fact>
+            </then>
+        </option>
+    </question>
+
+    <question>
+        <description>What price range do you prefer?</description>
+        <option>
+            <description>Up to 50 euros</description>
+            <then>
+                <fact name="price">fifty</fact>
+            </then>
+        </option>
+        <option>
+            <description>Between 50 and 200 euros</description>
+            <then>
+                <fact name="price">fifty_two_hundred</fact>
+            </then>
+        </option>
+        <option>
+            <description>Above 200 euros</description>
+            <then>
+                <fact name="price">two_hundred</fact>
+            </then>
+        </option>
+    </question>
+
+    <question>
+        <description>Which body part would you like to cover</description>
+        <option>
+            <description>Fingers</description>
+            <then>
+                <fact name="body">finger</fact>
+            </then>
+        </option>
+        <option>
+            <description>Chest</description>
+            <then>
+                <fact name="body">chest</fact>
+            </then>
+        </option>
+        <option>
+            <description>Neck</description>
+            <then>
+                <fact name="body">neck</fact>
+            </then>
+        </option>
+        <option>
+            <description>Ear</description>
+            <then>
+                <fact name="body">ear</fact>
+            </then>
+        </option>
+    </question>
+
+    <question>
+        <description>What size do you have in mind</description>
+        <option>
+            <description>Small</description>
+            <then>
+                <fact name="size">small</fact>
+            </then>
+        </option>
+        <option>
+            <description>Medium</description>
+            <then>
+                <fact name="size">medium</fact>
+            </then>
+        </option>
+        <option>
+            <description>Large</description>
+            <then>
+                <fact name="size">large</fact>
+            </then>
+        </option>
+    </question>
+
+<!-- Specific questions
+    <question>
+        <description></description>
+        <option>
+            <description></description>
+            <then>
+                <fact name=""></fact>
+            </then>
+        </option>
+    </question> -->
+
+</knowledge>

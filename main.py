@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
-from xml_parser import *
-from interface import *
-from solver import *
+from Parser.xml_parser import *
+from Interface.interface import *
+from Forward_chaining.forward_chaining import *
 
 if __name__ == "__main__":
     parser = XML_Parser()                                       # Parser object instanciated
