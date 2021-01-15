@@ -5,3 +5,7 @@ The packages used are Tkinter for the interface, and ElementTree for parsing the
 The latest version of these packages have to be installed in order for the scripts to run. 
 The program will run when python3 main.py is written in the terminal.
 The knolwedge file is found in knowledge/jewelleryFinal.xml
+
+# Known Bugs
+
+1. Tkinter window only closes at the end of a session.
